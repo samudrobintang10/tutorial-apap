@@ -38,7 +38,7 @@ digunakan oleh developer untuk menghandle projek baik dalam skala besar dan keci
 dengan kecepatan dan efisiensinya. Git sendiri memiliki desain yang sederhana dan dapat mendukung
 perkembangan secara paralel. Sistem yang digunakan juga terdistribusi (peer to peer) Git juga mampu
 digunakan dalam proyek besar seperti Kernel Linux. Penyimpanannya juga murni berbasis file tanpa menggunakan
-database. Git dapat diakses melalui command line interface
+database. Git dapat diakses melalui command line interface.
 Sumber: https://edusoftcenter.com/apasaja-kelebihan-dan-kekurangan-git/
 
 ### Spring
@@ -87,7 +87,7 @@ http://localhost:8080/is-palindrome/tamat
 
 ```
 
-Tergantung dari kebutuhannya untuk dapat menentukan mana yang lebih baik untuk digunakan
+Tergantung dari kebutuhannya untuk dapat menentukan mana yang lebih baik untuk digunakan.
 Sumber:
 https://www.dineshonjava.com/requestparam-vs-pathvariable-annotations-in-spring-mvc/#:~:text=The%20key%20difference%20between%20%40RequestParam,values%20from%20the%20URI%20template
 
