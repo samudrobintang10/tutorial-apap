@@ -14,6 +14,7 @@ Pertanyaan 1: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link ber
 http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20
 APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 Apa yang
 terjadi? Jelaskan mengapa hal tersebut dapat terjadi?
+
 Hal yang terjadi adalah Whitelabel error page dikarenakan belum dipersiapkan 
 file HTML dan Thymeleaf. Selain itu, masalah ini terjadi karena view yang telah kamu 
 cantumkan pada Controller (contoh: “add-bioskop”) belum dibuat.
@@ -21,6 +22,7 @@ cantumkan pada Controller (contoh: “add-bioskop”) belum dibuat.
 Pertanyaan 2: Menurut kamu anotasi @Autowired pada class Controller tersebut
 merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja
 @Autowired tersebut dalam konteks service dan controller yang telah kamu buat?
+
 @Autowired digunakan untuk memberikan kontrol yang untuk dimana dan bagaimana autowiring harusnya 
 terlaksana. Dengan adanya notasi ini maka melakukan injeksi pada interface BioskopService untuk controller.
 Kemudian, disini service berguna untuk menyimpan data objek yang dibuat dari model. Controller akan menggunakan
@@ -34,18 +36,21 @@ berikut:
 http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20
 APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx Apa yang terjadi? Jelaskan
 mengapa hal tersebut dapat terjadi.
+
 Karena parameter disini tidak lengkap yang mana disini wajib menuliskan value untuk jumlahStudio
 karena pada saat membuat controller bertuliskan required = true yang artinya tidak boleh tidak
 diisi
 
 Pertanyaan 4: Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung,
 link apa yang harus diakses?
+
 Mengakses halaman http://localhost:8080/bioskop/view?namaBioskop=Bioskop%20Maung
 karena menggunakan @RequestParam dan dengan asumsi nama bioskop dengan nama bioskop maung sudah ada
 
 Pertanyaan 5: Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk
 mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan
 juga bukti screenshotmu.
+
 Yang ditampilkan adalah seluruh bioskop yang terdaftar karena baru hanya 1 yang 
 terdaftar maka hanya satu yang dikeluarkan yakni Bioskop PAPA APAP dengan ID 1
 [Screenshoot Via Google Drive](https://drive.google.com/file/d/1HZhcVeKJfMBAKPg-lDPBNGHSjL5_Jr6h/view?usp=sharing)
