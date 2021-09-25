@@ -8,6 +8,46 @@
 
 ---
 
+## Tutorial 3
+1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
+(@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+@AllArgsConstructor digunakan untuk membuat secara otomatis Constructor dan menggunakan parameter dari setiap fields yang ada dikelas tersebut
+@NoArgsConstructor digunakan untuk membuat secara otomatis Constructor tanpa parameter
+@Setter digunakan untuk membuat method setter secara otomatis untuk semua fields atau attribute yang ada pada class
+@Getter digunakan untuk membuat method getter secara otomatis untuk semua fields atau attribute yang ada pada class
+@Entity digunakan sebagai penanda untuk class adalah entity dalam Java Persistence API (JPA)
+@Table digunakan untuk membuat table SQL dengan nama yang bisa diatur
+
+Sumber : 
+http://www.javabyexamples.com/delombok-allargsconstructor-noargsconstructor-and-requiredargsconstructor
+https://projectlombok.org/features/GetterSetter
+
+2. Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method
+tersebut?
+digunakan untuk mencari suatu BioskopModel berdasarkan nomor bioskopnya dan akan mereturn sebuah Object BioskopModel
+
+3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn?
+@JoinTable akan membentuk table baru yang akan menggabungkan kedua table berdasarkan atribut-atribut yang ada pada kedua table tersebut
+@JoinColumn akan mengambil kolom sesuai dengan atribut yang dipilih pada table yang dipilih dan dimasukkan ke dalam table tersebut
+
+4. Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa
+kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa
+perbedaan nullable dan penggunaan anotasi @NotNull
+name digunakan untuk membuat attribut baru yang nanti akan dihubungkan dengan refrencedColumnName sebagai foreign key yang dihubungkan ke "noBioskop"
+pada table BioskopModel. Kemudian, nullable digunakan untuk memberikan pernyataan apakah boleh tidaknya attribute dari table lain bernilai null atau tidak.
+Berbeda dengan @NotNull, yakni @NotNull melakukan pengecekkan diawal sebelum mengeksekusi SQL-nya. @NotNull tidak mengeksekusi apabila dilanggar.
+Sementara itu, nullable akan tetap berjalan dan gagal ketika constraintnya dilanggar
+
+Sumber : https://www.baeldung.com/hibernate-notnull-vs-nullable
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER?
+FetchType.LAZY digunakan untuk men-load data yang akan digunakan tetapi hanya yang diperlukan saja dan dilakukan ketika ada pemanggilan secara explisit
+FetchType.EAGER digunakan untuk men-load semua data secara langsung meskipun ketika tidak diperlukan
+CascadeType.ALL digunakan untuk membuat entitas tersebut dapat melakukan semua operasi yang ada yang mempengaruhi entity yang berhubungan berdasarkan attribute dari foreign keynya. 
+Operasi yang dapat dilakukan adalah seperti (PERSIST, REMOVE, REFRESH, MERGE, DETACH)
+
+Sumber : https://www.baeldung.com/hibernate-lazy-eager-loading
+
 
 ## Tutorial 2
 Pertanyaan 1: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut:
