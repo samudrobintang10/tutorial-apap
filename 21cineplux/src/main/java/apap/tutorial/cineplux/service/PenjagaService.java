@@ -7,4 +7,5 @@ public interface PenjagaService {
     void updatePenjaga(PenjagaModel penjaga);
     PenjagaModel getPenjagaByNoPenjaga(Long noPenjaga);
     void deletePenjaga(PenjagaModel penjaga);
+    PenjagaModel getPenjagaByNamaPenjaga(String namaPenjaga);
 }

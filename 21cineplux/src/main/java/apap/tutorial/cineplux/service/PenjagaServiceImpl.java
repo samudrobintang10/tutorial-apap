@@ -36,4 +36,13 @@ public class PenjagaServiceImpl implements PenjagaService {
     public void deletePenjaga(PenjagaModel penjaga) {
         penjagaDB.delete(penjaga);
     }
+
+    @Override
+    public PenjagaModel getPenjagaByNamaPenjaga(String namaPenjaga) {
+        Optional<PenjagaModel> penjaga = penjagaDB.findByNamaPenjaga(namaPenjaga);
+        if(penjaga.isPresent()) {
+            return penjaga.get();
+        }
+        return null;
+    }
 }
