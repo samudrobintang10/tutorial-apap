@@ -1,8 +1,10 @@
 package apap.tutorial.cineplux.controller;
 
 import apap.tutorial.cineplux.model.BioskopModel;
+import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.service.BioskopService;
+import apap.tutorial.cineplux.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,19 @@ public class BioskopController {
     @Autowired
     private BioskopService bioskopService;
 
+    @Qualifier("filmServiceImpl")
+    @Autowired
+    FilmService filmService;
+
+    private int tempRow = 0;
+
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model){
+        List<FilmModel> listFilm = filmService.getListFilm();
+        model.addAttribute("listFilm", listFilm);
+        model.addAttribute("row", tempRow);
         model.addAttribute("bioskop", new BioskopModel());
+
         return "form-add-bioskop";
     }
 
@@ -52,8 +64,10 @@ public class BioskopController {
             return "error-page-bioskop";
         }
         List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
+        List<FilmModel> listFilm = bioskop.getListFilm();
 
         model.addAttribute("bioskop", bioskop);
+        model.addAttribute("listFilm", listFilm);
         model.addAttribute("listPenjaga", listPenjaga);
 
         return "view-bioskop";
@@ -105,5 +119,29 @@ public class BioskopController {
         model.addAttribute("noBioskop", noBioskop);
 
         return "delete-bioskop";
+    }
+
+    @PostMapping("/bioskop/tambahrow")
+    public String tambahRow(Model model
+    ) {
+        System.out.println("Sebelum Tambah Row: " + tempRow);
+        tempRow++;
+        if (tempRow < 0) {
+            tempRow = 0;
+        }
+        System.out.println("Tambah Row: " + tempRow);
+        return addBioskopForm(model);
+    }
+
+    @PostMapping("/bioskop/hapusrow")
+    public String hapusRow(Model model
+    ) {
+        System.out.println("Sebelum Kurang Row: " + tempRow);
+        tempRow--;
+        if (tempRow <= 0) {
+            tempRow = 0;
+        }
+        System.out.println("Kurang Row: " + tempRow);
+        return addBioskopForm(model);
     }
 }

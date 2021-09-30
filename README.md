@@ -8,6 +8,37 @@
 
 ---
 
+## Tutorial 4
+1. Jelaskan perbedaan th:include dan th:replace!
+th:include dilakukan untuk memasukkan kedalam tag yang ditunjuk dibandingkan dengan
+th:replace yang akan mengantikan tag yang ditunjuk tersebut 
+
+Sumber: https://stackoverflow.com/questions/37103958/difference-between-thymeleaf-include-and-replace
+
+2. Jelaskan apa fungsi dari th:object!
+Dengan menggunakan th:object maka kita dapat mempengaruhi object sesuai dengan apa yang kita isikan.
+Selain itu, kita bisa mendapatkan layanan getter dan setter method sehingga input dapat mempengaruhi object
+yang sesuai pada th:object
+
+Sumber: https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html
+
+3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+${...} : Variable expressions.
+*{...} : Selection expressions.
+${...} digunakan untuk mengisi value yang dikirimkan dari controller dan bisa langsung untuk mengambil apa saja yang terdefinisi sedangkan 
+*{...} digunakan apabila telah ada object yang telah terdefinisi dengan ${...} dan digunakan untuk mengambil atribute yang diinginkan
+
+Contoh penggunaan nomor 3:
+${...} : <span th:text="${book.author.name}">
+*{...} :
+<div th:object="${book}">
+  ...
+  <span th:text="*{title}">...</span>
+  ...
+</div>
+
+Sumber : https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
+
 ## Tutorial 3
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
 (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
