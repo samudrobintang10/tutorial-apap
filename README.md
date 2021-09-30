@@ -29,7 +29,8 @@ ${...} digunakan untuk mengisi value yang dikirimkan dari controller dan bisa la
 *{...} digunakan apabila telah ada object yang telah terdefinisi dengan ${...} dan digunakan untuk mengambil atribute yang diinginkan
 
 Contoh penggunaan nomor 3:
-```<span th:text="${book.author.name}">
+```
+<span th:text="${book.author.name}">
 ```
 
 ```*{...} :
