@@ -124,24 +124,20 @@ public class BioskopController {
     @PostMapping("/bioskop/tambahrow")
     public String tambahRow(Model model
     ) {
-        System.out.println("Sebelum Tambah Row: " + tempRow);
         tempRow++;
         if (tempRow < 0) {
             tempRow = 0;
         }
-        System.out.println("Tambah Row: " + tempRow);
         return addBioskopForm(model);
     }
 
     @PostMapping("/bioskop/hapusrow")
     public String hapusRow(Model model
     ) {
-        System.out.println("Sebelum Kurang Row: " + tempRow);
         tempRow--;
         if (tempRow <= 0) {
             tempRow = 0;
         }
-        System.out.println("Kurang Row: " + tempRow);
         return addBioskopForm(model);
     }
 }
