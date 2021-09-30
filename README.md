@@ -28,8 +28,10 @@ ${...} : Variable expressions.
 ${...} digunakan untuk mengisi value yang dikirimkan dari controller dan bisa langsung untuk mengambil apa saja yang terdefinisi sedangkan 
 *{...} digunakan apabila telah ada object yang telah terdefinisi dengan ${...} dan digunakan untuk mengambil atribute yang diinginkan
 
-Contoh penggunaan nomor 3: 
-```${...} : <span th:text="${book.author.name}">```
+Contoh penggunaan nomor 3:
+```<span th:text="${book.author.name}">
+```
+
 ```*{...} :
 <div th:object="${book}">
   ...
