@@ -49,6 +49,7 @@ public class BioskopController {
     @GetMapping("/bioskop/viewall")
     public String listBioskop(Model model) {
         List<BioskopModel> listBioskop = bioskopService.getBioskopList();
+
         model.addAttribute("listBioskop", listBioskop);
         return "viewall-bioskop";
     }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class FilmController {
 
@@ -37,6 +39,9 @@ public class FilmController {
     public String viewAllFilm(
             Model model
     ){
+        List<FilmModel> listFilm =  filmService.getListFilm();
+        int jumlahFilm = listFilm.size();
+        model.addAttribute("jumlahFilm", jumlahFilm);
         model.addAttribute("listFilm", filmService.getListFilm());
         return "viewall-film";
     }
