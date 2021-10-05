@@ -54,7 +54,7 @@ public class BioskopModel implements Serializable {
     //Relasi dengan FilmModel
     @ManyToMany
     @JoinTable(
-            name = "file_bioskop",
+            name = "film_bioskop",
             joinColumns = @JoinColumn(name = "no_bioskop"),
             inverseJoinColumns = @JoinColumn(name = "no_film")
     )
