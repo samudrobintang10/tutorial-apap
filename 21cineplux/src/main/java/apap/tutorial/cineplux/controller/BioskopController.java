@@ -2,6 +2,7 @@ package apap.tutorial.cineplux.controller;
 
 import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.FilmModel;
+import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.FilmService;
