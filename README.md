@@ -12,17 +12,28 @@
 1. Apa itu Postman? Apa kegunaannya?
 Postman adalah sebuah aplikasi yang berfungsi sebagai REST Client untuk menguji coba REST API.
 Tool ini merupakan salah satu tool yang harus digunakan oleh para web developer yang bekerja dalam pengaturan API.
+Postman mengetes web API dengan membuat HTTP requests dari luaran service
+
+Sumber : https://www.baeldung.com/postman-testing-collections#:~:text=Postman%20is%20a%20standalone%20tool,Postman%20interact%20with%20our%20API.
 
 2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
 @JsonIgnoreProperties digunakan untuk pada suatu class untuk menandai properti yang akan diignore
 @JsonProperty akan digunakan untuk memetakan nama properti dengan kunci JSON selama serialisasi dan deserialisasi. 
 
+Sumber : https://www.tutorialspoint.com/jackson_annotations/jackson_annotations_jsonignoreproperties.htm
+
 3. Apa kegunaan atribut WebClient?
 Kegunaan WebClient dilakukan untuk melakukan pengiriman data sekaligus penerimaan data sesuai hal yang diindentifikasi oleh URI
+
+Sumber : https://www.baeldung.com/webflux-webclient-parameters
 
 4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
 ResponseEntity digunakan untuk mengkonfigurasi HTTP Response dan menjadi satu entitas untuk pengembalian HTTP Response
 BindingResult berisi terkait informasi yang ada mulai dari kesalahan ataupun field yang diperlukan. Selain itu, ini juga menginformasikan adanya kesalahan dalam pemanggilan method
+
+Sumber : 
+https://www.baeldung.com/spring-response-entity
+https://zetcode.com/spring/bindingresult/
 
 ## Tutorial 4
 1. Jelaskan perbedaan th:include dan th:replace!
