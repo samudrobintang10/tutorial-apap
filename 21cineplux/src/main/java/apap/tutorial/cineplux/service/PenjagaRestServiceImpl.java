@@ -5,8 +5,6 @@ import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.repository.BioskopDB;
 import apap.tutorial.cineplux.repository.PenjagaDB;
 //import apap.tutorial.cineplux.rest.PenjagaDetail;
-import apap.tutorial.cineplux.rest.BioskopDetail;
-import apap.tutorial.cineplux.rest.PenjagaDetail;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,10 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
 import java.time.LocalTime;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -26,6 +24,7 @@ import java.util.NoSuchElementException;
 @Service
 @Transactional
 public class PenjagaRestServiceImpl implements PenjagaRestService {
+    private final WebClient webClient;
 
     @Autowired
     private PenjagaDB penjagaDB;
@@ -81,5 +80,17 @@ public class PenjagaRestServiceImpl implements PenjagaRestService {
         } else {
             throw new UnsupportedOperationException("Bioskop still Open!");
         }
+    }
+
+    public PenjagaRestServiceImpl(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl("https://api.agify.io/").build();
+    }
+
+    @Override
+    public String prediksiUmurPenjaga(Long noPenjaga){
+        PenjagaModel penjaga = getPenjagaByNoPenjaga(noPenjaga);
+        String[] namaPenjaga = penjaga.getNamaPenjaga().split(" ");
+        ClientResponse response = this.webClient.get().uri("/?name=" + namaPenjaga[0]).exchange().block();
+        return Objects.requireNonNull(Objects.requireNonNull(response).bodyToMono(JsonNode.class).block()).get("age").asText();
     }
 }

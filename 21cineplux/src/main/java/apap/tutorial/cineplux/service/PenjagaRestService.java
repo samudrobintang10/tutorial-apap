@@ -14,4 +14,5 @@ public interface PenjagaRestService {
     PenjagaModel getPenjagaByNoPenjaga(Long noPenjaga);
     void updatePenjaga(Long noPenjaga, PenjagaModel penjagaUpdate);
     void deletePenjaga(Long noPenjaga);
+    String prediksiUmurPenjaga(Long noPenjaga);
 }
