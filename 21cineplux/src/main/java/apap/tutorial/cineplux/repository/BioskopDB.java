@@ -11,5 +11,6 @@ import java.util.Optional;
 public interface BioskopDB extends JpaRepository<BioskopModel, Long> {
     Optional<BioskopModel> findByNoBioskop(Long noBioskop);
     List<BioskopModel> findAllByOrderByNamaBioskopAsc();
+    List<BioskopModel> findByJumlahStudioOrderByAlamatBioskopAsc(Integer jumlahStudio);
     // https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-six-sorting/
 }
