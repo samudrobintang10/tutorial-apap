@@ -7,6 +7,8 @@ import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +60,7 @@ public class BioskopController {
             @RequestParam(value = "noBioskop") Long noBioskop,
             Model model
     ) {
+        String userRole = getUserRole();
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
         if(bioskop == null) {
             model.addAttribute("noBioskop", noBioskop);
@@ -69,7 +72,7 @@ public class BioskopController {
         model.addAttribute("bioskop", bioskop);
         model.addAttribute("listFilm", listFilm);
         model.addAttribute("listPenjaga", listPenjaga);
-
+        model.addAttribute("userRole", userRole);
         return "view-bioskop";
     }
 
@@ -139,5 +142,10 @@ public class BioskopController {
             tempRow = 0;
         }
         return addBioskopForm(model);
+    }
+
+    public String getUserRole() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getAuthorities().toString().replace("[", "").replace("]","");
     }
 }

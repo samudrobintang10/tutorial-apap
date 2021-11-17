@@ -8,6 +8,57 @@
 
 ---
 
+## Tutorial 6
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+Otentikasi adalah ketika proses verifikasi atau identifikasi pengguna apakah 
+sudah terdaftar dalam sistem atau belum. Hal ini dilakukan pada proses login dengan 
+memasukkan username dan password yang telah didaftarkan. Kode ini diimplementasi 
+pada bagian websecurityconfig yang akan melakukan proses autentikasi. Sedangkan, Otorisasi
+adalah proses ketika menentukan apakah user dapat melakukan atau mengakses fitur tertentu atau tidak.
+Kode ini diimplementasi pada dengan memberikan arahan pada html yang memiliki fitur khusus untuk suatu role maka
+akan di cek rolenya terlebih dahulu yang dibawa dari controller.
+
+Sumber: https://www.akakom.ac.id/site/news/124/autentikasi-dan-otorisasi-user-menggunakan-framework-yii
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+BCryptPasswordEncoder adalah sebuah class yang dapat digunakan untuk menencode dan decode password dengan cara tersendiri. Cara kerjanya adalah
+dengan user memasukkan sebuah password yang kemudian akan di encode dan dikembalikan dalam bentuk yang telah terencode.
+ini bertujuan agar data aman meskipun ada pada database. Lalu pada tutorial ini, password tersebut dapat dicocokkan 
+dengan fungsi matches dari BCryptPasswordEncoder yang akan mengcocokkan password 
+yang diinput dengan password yang ada meski sudah diencode
+
+Sumber : http://www.masterspringboot.com/security/authentication/using-bcryptpasswordencoder-to-encrypt-your-passwords/
+
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa
+demikian?
+Lebih baik menggunakan hashing karena bersifat satu arah dan password yang telah dienkripsi tidak akan dapat dilakukan dekripsi untuk membuat data lebih aman
+. Berbeda dengan enycription karena dua arah yang memiliki dekripsi untuk membaca password dan kemungkinan pencurian data dapat terjadi. Hashing akan melakukan
+random teks untuk menghasilkan teks baru yang tidak bisa dibalikan. Tapi hal itu dapat dilakukan ketika otentikasi menggunakan pencarian inti pesan yang tepat dengan
+cara tersendiri dan cocok maka akan berhasil terotentikasi
+
+Sumber : https://www.clickssl.net/blog/difference-between-hashing-vs-encryption
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+UUID adalah sekumpulan 32 karakter yang berbentuk string dan unik dan dibuat 
+secara random bagi setiap data. UUID ini sangat cocok digunakan sebagai 
+identifier atau primary key. Penggunaannya pada tutorial ini adalah pada UserModel
+
+@Id
+@GeneratedValue(generator="system-uuid")
+@GenericGenerator(name="system-uuid", strategy = "uuid")
+private String id;
+
+dimasukkan kedalam generator dan gua namenya maka ketika dibuat user baru akan tergenerate user id baru yang unik
+
+Sumber : https://stackoverflow.com/questions/292965/what-is-a-uuid
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+Class ini digunakan untuk pembuatan otentikasi dari user. Class ini digunakan utnuk mencari nama dari pengguna, password, grantedAuthorities dari setiap
+pengguna. Class ini kemudian akan menyimpan informasi penting yang akan digunakan untuk proses otentikasi
+
+Sumber : https://www.baeldung.com/spring-security-authentication-with-a-database
+
 ## Tutorial 5
 1. Apa itu Postman? Apa kegunaannya?
 Postman adalah sebuah aplikasi yang berfungsi sebagai REST Client untuk menguji coba REST API.
