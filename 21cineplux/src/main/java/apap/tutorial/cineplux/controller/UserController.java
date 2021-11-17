@@ -65,7 +65,6 @@ public class UserController {
         UserModel user = userService.getUserByUsername(username);
         userService.deleteUser(user);
         model.addAttribute("username", username);
-
         return "delete-user";
     }
 
