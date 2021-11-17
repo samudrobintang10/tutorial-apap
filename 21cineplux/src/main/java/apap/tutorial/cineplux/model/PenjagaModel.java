@@ -1,5 +1,6 @@
 package apap.tutorial.cineplux.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @Setter @Getter
 @Entity
 @Table(name = "penjaga")
+@JsonIgnoreProperties(value = {"bioskop"}, allowSetters = true)
 public class PenjagaModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +32,8 @@ public class PenjagaModel implements Serializable{
     @NotNull
     @Column(nullable = false)
     private Integer jenisKelamin;
+
+    private String umur;
 
     //Relasi dengan BioskopModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
