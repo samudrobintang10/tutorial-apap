@@ -127,7 +127,7 @@ public class UserController {
         Pattern p = Pattern.compile(regex);
 
         // If the string is empty
-        // then print No
+        // then return false
         if (str == null) {
             return false;
         }
@@ -136,7 +136,7 @@ public class UserController {
         // & regular expression
         Matcher m = p.matcher(str);
 
-        // Print Yes if string
+        // return true if string
         // matches ReGex
         if (m.matches())
             return true;
