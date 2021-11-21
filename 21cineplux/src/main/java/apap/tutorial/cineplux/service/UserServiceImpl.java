@@ -1,5 +1,6 @@
 package apap.tutorial.cineplux.service;
 
+import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.UserModel;
 import apap.tutorial.cineplux.repository.UserDB;
 import org.apache.catalina.User;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -49,4 +51,12 @@ public class UserServiceImpl implements UserService{
         user.setPassword(pass);
         return userDB.save(user);
     }
+
+    public Boolean isEmailExist(String email) {
+        Optional<UserModel> user = userDB.findByEmail(email);
+        if(user.isPresent()) {
+            return true;
+        }
+        return false;
+    };
 }

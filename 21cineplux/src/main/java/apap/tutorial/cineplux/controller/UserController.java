@@ -37,8 +37,12 @@ public class UserController {
     }
 
     @PostMapping(value = "/add")
-    private String addUserSubmit(@ModelAttribute UserModel user, @RequestParam String password, Model model) {
+    private String addUserSubmit(@ModelAttribute UserModel user, @RequestParam String password, @RequestParam String email, Model model) {
         if(!isAllPresent(password)) {
+            return "failed-create-user";
+        }
+        Boolean ada = userService.isEmailExist(email);
+        if(ada.equals(true)) {
             return "failed-create-user";
         }
         userService.addUser(user);

@@ -11,4 +11,5 @@ public interface UserService {
     List<UserModel> getListUser();
     UserModel getUserByUsername(String username);
     void deleteUser(UserModel username);
+    Boolean isEmailExist(String email);
 }
