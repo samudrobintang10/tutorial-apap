@@ -6,6 +6,8 @@ import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.PenjagaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,14 @@ public class PenjagaController {
 
     @GetMapping("/penjaga/add/{noBioskop}")
     public String addPenjagaForm(@PathVariable Long noBioskop, Model model) {
+        String userRole = getUserRole();
+        if (!userRole.equals("MANAGER")) {
+            return "error-no-authorities";
+        }
         PenjagaModel penjaga = new PenjagaModel();
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
         penjaga.setBioskop(bioskop);
+
         model.addAttribute("penjaga", penjaga);
         return "form-add-penjaga";
     }
@@ -48,6 +55,10 @@ public class PenjagaController {
             @PathVariable Long noPenjaga,
             Model model
     ) {
+        String userRole = getUserRole();
+        if (!userRole.equals("MANAGER")) {
+            return "error-no-authorities";
+        }
         PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
         if (penjaga == null) {
             model.addAttribute("noPenjaga", noPenjaga);
@@ -98,6 +109,10 @@ public class PenjagaController {
             @PathVariable Long noPenjaga,
             Model model
     ) {
+        String userRole = getUserRole();
+        if (!userRole.equals("MANAGER")) {
+            return "error-no-authorities";
+        }
         PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
         if (penjaga == null) {
             model.addAttribute("noPenjaga", noPenjaga);
@@ -108,11 +123,17 @@ public class PenjagaController {
             model.addAttribute("noBioskop", bioskop.getNoBioskop());
             return "not-changeable";
         }
+
         penjagaService.deletePenjaga(penjaga);
         model.addAttribute("penjaga", penjaga);
         model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
 
         return "delete-penjaga";
+    }
+
+    public String getUserRole() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getAuthorities().toString().replace("[", "").replace("]","");
     }
 
 
