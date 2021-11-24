@@ -36,13 +36,35 @@ function App() {
     const newItems = [...cartItems];
     const newItem = { ...item };
     const targetInd = newItems.findIndex((it) => it.id === newItem.id);
-
+    const price = newItem.price;
+    let newBalance = balance - price;
     if (targetInd < 0) {
-      newItem.inCart = true;
-      newItems.push(newItem);
-      updateShopItem(newItem, true);
+      if (newBalance < 0) {
+        alert("Balance not sufficient!");
+        newBalance = balance;
+      } else {
+        newItem.inCart = true;
+        newItems.push(newItem);
+        updateShopItem(newItem, true);
+      }
     }
     setCartItems(newItems);
+    setBalance(newBalance);
+  }
+
+  function handleDeleteItemFromCart(item) {
+    const Items = [...cartItems];
+    const selectedItem = { ...item };
+    const targetInd = Items.findIndex((it) => it.id === selectedItem.id);
+    const price = selectedItem.price;
+    let newBalance = balance + price;
+    if (targetInd > -1) {
+      selectedItem.inCart = false;
+      Items.splice(targetInd, 1);
+      updateShopItem(selectedItem, false);
+    }
+    setCartItems(Items);
+    setBalance(newBalance);
   }
 
   return (
@@ -64,7 +86,7 @@ function App() {
       </p>
       <p className="text-center text-primary">
         Your Balance:
-        <b>{balance}</b>
+        <b>{balance.toFixed(2)}</b>
       </p>
       <div className="container pt-3">
         <div className="row mt-3">
@@ -73,7 +95,7 @@ function App() {
               <List
                 title="My Cart"
                 items={cartItems}
-                onItemClick={() => {}}
+                onItemClick={handleDeleteItemFromCart}
               ></List>
             </div>
           ) : (
