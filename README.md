@@ -12,21 +12,46 @@
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
 sebagai ilustrasi dari apa yang Anda jelaskan.
 
-
 Pada nomor 1, Saya menambahkan fungsi baru yakni bernama delete handleDeleteItemFromCart. Hal yang pertama kali saya lakukan adalah menerima dalam variabel array Cart yang ada kemudian item yang ingin dihapus. Lalu kemudian saya memanggil fungsi yang akan mencari index dari item pada array Cart. Setelah diambil indexnya, maka akan dicek terlebih dahulu untuk memastikan bisa dihapus dengan > -1. Kemudian, saya menset dan menyatakan false bahwa selectedItem sudah tidak ada dicart. Barulah disini saya menghapus selectedItem dari cart dengan cara splice berdasarkan indexnya. Lalu saya update shop item agar tombol untuk menambahkan ke keranjang tersedia kembali. Terakhir, saya update state untuk mengumumkannya secara global untuk cartItemsnya
 
-
+![1 1](https://user-images.githubusercontent.com/82602190/143254898-f9ac4566-52c2-41ea-85ae-0cce817b97da.jpg)
 
 Pada nomor 2, saya menambahkan implementasi baru pada bagian add item dan juga delete item dimana apabila di add saldo akan berkurang dengan cara mengambil balance dari state kemudian dikurangi dengan price pada item. Lalu diset menjadi global kembali. Selanjutnya untuk delete, caranya hampir sama namun perbedaannya disini adalah ditambah antara state balance dan price.
 
+![Inked1 2 1](https://user-images.githubusercontent.com/82602190/143255533-27b27699-fdc5-4358-91a6-161ac4c3f398.jpg)
+
+![Inked1 2 2](https://user-images.githubusercontent.com/82602190/143255522-8f4c0306-1d1c-41f8-a2d8-2922dbd861c4.jpg)
+
+(Perubahan ditandai dengan warna putih)
+
 Pada nomor 3, saya akan melakukan pengecekkan pada add item ke cart yakni dengan memberikan if untuk mengecek apabila balancenya sudah kurang dari 0 maka tidak dapat membeli barang dengan memberikan alert dan item tidak akan dimasukkan kedalam keranjang
+
+![Inked1 3](https://user-images.githubusercontent.com/82602190/143255529-ee64f48c-a44e-4723-926b-223babb84f6f.jpg)
+
+(Perubahan ditandai dengan warna putih)
 
 2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan
 props?
+
+Menurut pemahaman saya state merupakan istilahnya penggunaan deklarasi dalam class untuk penggunaan variabel yang nantinya dapat berupa boolean, Array, string, ataupun integer. Sedangkan props istilahnya seperti parameter yang nantinya dapat digunakan pada suatu fungsi/class yang ada untuk menuju ke fungsi/class lainnya. Props juga diakses oleh child components sedangkan state tidak dapat diakses pada class lain. State hanya dapat dimodifikasi dengan setState atau membuat set pada Functional-based.
+
+Sumber : https://www.javatpoint.com/react-state-vs-props, https://www.geeksforgeeks.org/reactjs-state-vs-props/
+
 3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam
 React? sebutkan alasannya.
+
+Ya betul menurut saya sebaiknya kita menggunakannya karena akan sangat membantu dalam pembuatan aplikasi sehingga kodenya menjadi reusable dan kita tinggal memasangkan probs atau parameter yang sesuai untuk menggunakannya pada bagian lain. Justru inilah kemampuan utama dari react yang membaginya menjadi beberapa komponen dan menyatukannya kembali menjad satu kesatuan 
+
 4. Apa perbedaan class component dan functional component?
+
+Class Component menyerupai konsep OOP dan merupakan metode yang awal digunakan sedangkan Functional Component menggunakan react hook untuk meminimalisir this.state agar lebih efisien (set). Secara code hampir sama namun yang membedakan adalah set'variable state' dan this.state.'variable state'. Selain itu, pada functional semua fungsinya dijadikan function 
+
 5. Dalam react, apakah perbedaan component dan element?
+
+Elemen adalah objek kecil DOM yang terdiri dari html seperti div, img, dan button. Elemen-elemen ini akan digabung dan barulah disebut sebagai Component. Elemen dapat mengandung elemen lain dalam propsnya. Component dapat definisikan sebagai fungsi yang akan menerima props sebagai input dan JSX sebagai outputnya. Component dimulai dengan huruf besar diawal
+
+Sumber : https://www.freetimelearning.com/view-blog.php What-is-the-difference-between-React-Element-and-React-Component?&&id=9
+
 
 ## Tutorial 6
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
