@@ -8,6 +8,64 @@
 
 ---
 
+## Tutorial 8
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian
+melakukan langkah - langkah tersebut?
+Langkah-langkah yang saya lakukan adalah dengan menambahkan this.setState kembali dan menset semua state
+id, title, 0, description, category, dan quantity di reset untuk yang string menjadi "" dan apabila integer atau angka
+menjadi 0. Hal ini akan mengubah state menjadi nilai tersebut dan menjadi form kosong untuk add Item lagi
+
+2. Jelaskan fungsi dari async dan await!
+Async dan await mempermudah dalam menangani asynchronous yang digunakan untuk merubah promise menjadi sebuah tulisan code yang baru.
+
+Hal ini juga merubah konfigurasi rantai promise secara eksplisit.
+Async disini akan mengubah sebuah function menjadi asynchronous. 
+Await artinya akan menunda eksekusi hingga proses Async selesai yang 
+akan mereturn sebuah promise yang berisi terpenuhi atau berupa penolakan dan 
+dapat dilakukan berkali-kali dalam sebuah function. Penggunaannya dapat menggunakan try and catch untuk melihat apakah
+ada error yang didapatkan atau respon dari API yang dipanggil
+
+Sumber : https://medium.com/coderupa/panduan-komplit-asynchronous-programming-pada-javascript-part-3-promise-819ce5d8b3c
+
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle
+pada pertanyaan ini.
+![1](https://user-images.githubusercontent.com/82602190/144415406-ab3bff12-ed1e-413b-972e-bf4921df8109.jpg)
+![2](https://user-images.githubusercontent.com/82602190/144415439-0ebd674e-54bc-4a26-84be-88f557728982.jpg)
+![3](https://user-images.githubusercontent.com/82602190/144415458-531c3510-4b39-47cf-ac37-97bc1bf88e44.jpg)
+![4](https://user-images.githubusercontent.com/82602190/144415473-f087d690-aad2-4832-b08b-5e7c68308443.jpg)
+![5](https://user-images.githubusercontent.com/82602190/144415492-b80078ce-dc97-411e-9953-1d891c9c3a1d.jpg)
+![6](https://user-images.githubusercontent.com/82602190/144415531-fed44bf8-d17c-44a1-bc2b-a44213279a59.jpg)
+![7](https://user-images.githubusercontent.com/82602190/144415614-685f6a5b-1d6b-463f-ac6d-133e4f4110ee.jpg)
+![8](https://user-images.githubusercontent.com/82602190/144415644-20a41017-7406-4cb4-8659-7388f8c48947.jpg)
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
+componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
+yang biasanya menggunakan lifecycle method tersebut”.
+
+componentDidMount : method yang dipanggil ketika component pertama kali dirender. 
+Hal ini dilakukan dimana ketika merun statements yang membutuhkan komponen sudah siap didalam DOM.
+Contohnya adalah ingin memanggil API sebelum dilakukannya render
+
+shouldComponentUpdate : method yang akan mereturn Boolean yang menspesifikasi apakah React akan melanjutkan rendering atau tidak. 
+Default valuenya adalah true. render() tidak akan terpanggil apabila returnnya bernilai false. Hal ini digunakan ketika kita ingin mengetahui
+terkait perubahan yang ada pada state atau props pada component. 
+
+componentDidUpdate : method yang dipanggil setelah component terupdate dalam DOM. Contohnya ketika ingin melakukan perubahan dan ingin melakukan
+update secara otomatis yang merubah state atau probs dan kemudian di render ulang, seperti munculnya text jika button ditekan
+
+componentWillReceiveProps : method ini dipanggil sebelum komponen menerima props baru. Hal ini digunakan ketika ingin melakukan fungsi yang state atau
+props yang berubah. Method ini membandingkan this.props dengan nextProps dan melakukan perubahan state yang menggunakan this.setState.  Contohnya adalah ketika
+ingin melakukan perubahan warna pada text
+
+componentWillUnmount : method yang dipanggil ketika component akan di removed dari DOM. Hal ini digunakan ketika ingin melakukan penghapusan suatu header
+pada suatu component 
+
+Sumber: 
+https://www.w3schools.com/react/react_lifecycle.asp
+https://www.tutorialspoint.com/reactjs-componentwillreceiveprops-method
+
+
 ## Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
 sebagai ilustrasi dari apa yang Anda jelaskan.

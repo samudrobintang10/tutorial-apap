@@ -13,9 +13,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter @Getter
 @Entity
 @Table(name = "penjaga")
 @JsonIgnoreProperties(value = {"bioskop"}, allowSetters = true)
@@ -34,6 +31,46 @@ public class PenjagaModel implements Serializable{
     private Integer jenisKelamin;
 
     private String umur;
+
+    public Long getNoPenjaga() {
+        return noPenjaga;
+    }
+
+    public void setNoPenjaga(Long noPenjaga) {
+        this.noPenjaga = noPenjaga;
+    }
+
+    public String getNamaPenjaga() {
+        return namaPenjaga;
+    }
+
+    public void setNamaPenjaga(String namaPenjaga) {
+        this.namaPenjaga = namaPenjaga;
+    }
+
+    public Integer getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(Integer jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public String getUmur() {
+        return umur;
+    }
+
+    public void setUmur(String umur) {
+        this.umur = umur;
+    }
+
+    public BioskopModel getBioskop() {
+        return bioskop;
+    }
+
+    public void setBioskop(BioskopModel bioskop) {
+        this.bioskop = bioskop;
+    }
 
     //Relasi dengan BioskopModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
