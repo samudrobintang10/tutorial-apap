@@ -15,7 +15,6 @@ const Item = (props) => {
     value,
     cart,
     total,
-    handleDelete,
   } = props;
   return (
     <div className={classes.item}>

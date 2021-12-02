@@ -57,7 +57,7 @@ class ItemList extends Component {
       let number = 0;
       for (let index = 0; index < this.state.items.length; index++) {
         const element = this.state.items[index];
-        if (element.title == title) {
+        if (element.title === title) {
           number = element.id;
         }
       }
@@ -82,8 +82,8 @@ class ItemList extends Component {
   handleChangeField(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-    if (name == "search") {
-      if (value != "") {
+    if (name === "search") {
+      if (value !== "") {
         this.handleSearch(value);
       } else {
         this.loadData();
@@ -169,39 +169,26 @@ class ItemList extends Component {
     console.log(this.state.isLoading);
   }
 
-  async handleUpdateStokItem(item) {
-    try {
-      const data = {
-        title: item.title,
-        price: item.price,
-        description: item.description,
-        category: item.category,
-        quantity: item.quantity - this.state.qtyCart,
-      };
-      await APIConfig.put(`/item/${item.id}`, data);
-      this.loadData();
-    } catch (error) {
-      alert("Oops terjadi masalah pada server");
-      console.log(error);
-    }
-  }
-
   async handleAddCart(item) {
-    if (this.state.qtyCart < item.quantity) {
-      this.handleUpdateStokItem(item);
-      try {
-        const data = {
-          quantity: this.state.qtyCart,
-          idItem: item.id,
-        };
-        await APIConfig.post("/cart", data);
-      } catch (error) {
-        alert("Oops terjadi masalah pada server");
-        console.log(error);
+    if (this.state.qtyCart >= 1) {
+      if (this.state.qtyCart <= item.quantity) {
+        try {
+          const data = {
+            quantity: this.state.qtyCart,
+            idItem: item.id,
+          };
+          await APIConfig.post("/cart", data);
+        } catch (error) {
+          alert("Oops terjadi masalah pada server");
+          console.log(error);
+        }
+      } else {
+        alert("stok tidak memenuhi");
       }
     } else {
-      alert("stok tidak memenuhi");
+      alert("harap set jumlahnya sebelum add to cart");
     }
+    
   }
 
   render() {
@@ -211,7 +198,8 @@ class ItemList extends Component {
         <div>
           <Search action={this.handleChangeField}></Search>
         </div>
-        <Button action={this.handleAddItem}>Add Item</Button>
+        <Button action={this.handleAddItem} 
+          >Add Item</Button>
         <div>
           {this.state.isSearch &&
             this.state.searchItems.map((item) => (

@@ -4,7 +4,7 @@ import classes from './styles.module.css';
 const Button = (props) => {
     const {action, children} = props;
     return (
-        <button onClick={action}>
+        <button onClick={action} className={classes.button}>
             {children}
         </button>
     )

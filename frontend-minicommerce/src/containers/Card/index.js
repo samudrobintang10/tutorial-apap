@@ -24,11 +24,6 @@ export default class Card extends React.Component {
     this.loadData();
   }
 
-//   handleChangeField(event) {
-//     const { name, value } = event.target;
-//     this.setState({ [name]: value });
-//   }
-
   async loadData() {
     try {
       const { data } = await APIConfig.get("/cart");
@@ -46,6 +41,7 @@ export default class Card extends React.Component {
   async handleDeleteCartButton(event) {
     event.preventDefault();
     this.handleDeleteCart(event);
+    this.setState({isCheckout: true})
   }
 
   async handleDeleteCart(event) {
@@ -91,7 +87,7 @@ export default class Card extends React.Component {
         )}
         {!this.state.cartHidden && (
           <div style={{ position: "fixed", top: 25, right: 25 }}>
-            {!this.state.isCheckout && (
+            {this.state.cartItems.length !== 0 && (
               <Fab
                 variant="extended"
                 onClick={this.handleDeleteCartButton}
@@ -103,7 +99,7 @@ export default class Card extends React.Component {
           </div>
         )}
         {!this.state.cartHidden && <CartList />}
-        {this.state.cartHidden && <ItemList updateBadge={this.updateBadge} />}
+        {this.state.cartHidden && <ItemList updateBadge={this.updateBadge} handleIsCheckout/>}
       </div>
     );
   }
