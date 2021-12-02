@@ -61,7 +61,10 @@ ingin melakukan perubahan warna pada text
 componentWillUnmount : method yang dipanggil ketika component akan di removed dari DOM. Hal ini digunakan ketika ingin melakukan penghapusan suatu header
 pada suatu component 
 
+Sumber: 
 https://www.w3schools.com/react/react_lifecycle.asp
+https://www.tutorialspoint.com/reactjs-componentwillreceiveprops-method
+
 
 ## Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
