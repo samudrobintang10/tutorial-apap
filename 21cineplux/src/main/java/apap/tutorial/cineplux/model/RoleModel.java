@@ -15,9 +15,6 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter @Getter
 @Entity
 @Table(name = "role")
 public class RoleModel implements Serializable{
@@ -34,4 +31,28 @@ public class RoleModel implements Serializable{
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<UserModel> userMode;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<UserModel> getUserMode() {
+        return userMode;
+    }
+
+    public void setUserMode(List<UserModel> userMode) {
+        this.userMode = userMode;
+    }
 }
